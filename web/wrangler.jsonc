@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "kindergarten-roster",
+  "pages_build_output_dir": "./pages-dist",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kindergarten-roster-db",
+      "database_id": "4a5efabc-d26a-4719-b019-0603944a33ca"
+    }
+  ]
+}

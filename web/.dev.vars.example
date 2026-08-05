@@ -1,0 +1,5 @@
+SYSTEM_ADMIN_USERNAME=your-admin-username
+SYSTEM_ADMIN_PASSWORD=your-admin-password
+SCHEDULER_USERNAME=your-scheduler-username
+SCHEDULER_PASSWORD=your-temporary-scheduler-password
+AUTH_SECRET=replace-with-a-long-random-secret

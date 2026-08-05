@@ -1,9 +1,8 @@
-import { requireChatGPTUser, chatGPTSignOutPath } from "../chatgpt-auth";
+import { requireAdmin } from "../admin-auth";
 import AdminScheduler from "./scheduler";
 
 export const dynamic = "force-dynamic";
-
 export default async function AdminPage() {
-  const user = await requireChatGPTUser("/admin");
-  return <AdminScheduler displayName={user.displayName} signOutPath={chatGPTSignOutPath("/")} />;
+  const session = await requireAdmin();
+  return <AdminScheduler displayName={session.username} role={session.role} />;
 }

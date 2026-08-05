@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { generateSchedule, type DutyRow, type ScheduleMode } from "../schedule";
 
-export default function AdminScheduler({ displayName, signOutPath }: { displayName: string; signOutPath: string }) {
+export default function AdminScheduler({ displayName, role }: { displayName: string; role: string }) {
   const [startDate, setStartDate] = useState("2026-08-31");
   const [endDate, setEndDate] = useState("2027-01-20");
   const [mode, setMode] = useState<ScheduleMode>("daily");
@@ -32,7 +32,7 @@ export default function AdminScheduler({ displayName, signOutPath }: { displayNa
   }
 
   return <main className="admin-page">
-    <header className="site-header"><div className="brand-mark">值</div><div><p className="eyebrow">排班管理中心</p><h1>建立與發布輪值表</h1></div><div className="user-area"><span>{displayName}</span><a href={signOutPath}>登出</a></div></header>
+    <header className="site-header"><div className="brand-mark">值</div><div><p className="eyebrow">排班管理中心</p><h1>建立與發布輪值表</h1></div><div className="user-area"><span className="role-badge">{role === "admin" ? "系統管理員" : "排班人員"}</span><span>{displayName}</span><a href="/api/auth/logout">登出</a></div></header>
     <section className="admin-grid">
       <aside className="settings-card">
         <p className="section-kicker">SCHEDULE SETTINGS</p><h2>排班設定</h2>

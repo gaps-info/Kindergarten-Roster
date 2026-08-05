@@ -1,0 +1,2 @@
+import { login } from "../../../admin-auth";
+export async function POST(request:Request){try{const body=await request.json() as {username?:string,password?:string};if(!body.username||!body.password)return Response.json({error:"請輸入帳號與密碼。"},{status:400});const result=await login(body.username.trim(),body.password);return Response.json(result,{status:result.ok?200:401});}catch(error){console.error("admin-login-failed",error);return Response.json({error:"登入服務尚未設定完成。"},{status:500});}}

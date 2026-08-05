@@ -1,0 +1,2 @@
+import { changePassword, getAdminSession } from "../../../admin-auth";
+export async function POST(request:Request){const session=await getAdminSession();if(!session)return Response.json({error:"登入已逾時，請重新登入。"},{status:401});const body=await request.json() as {currentPassword?:string,newPassword?:string};if(!body.currentPassword||!body.newPassword)return Response.json({error:"資料不完整。"},{status:400});const result=await changePassword(session.username,body.currentPassword,body.newPassword);return Response.json(result,{status:result.ok?200:400});}

@@ -56,6 +56,7 @@ footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px
 .admin-page { background:#eef3f1; }
 .user-area { display:flex; align-items:center; gap:14px; font-size:13px; color:var(--muted); }
 .user-area a { color:var(--teal); font-weight:800; }
+.role-badge { padding:4px 8px; border-radius:999px; background:#e5f3ef; color:#126b63; font-size:11px; font-weight:900; }
 .admin-grid { max-width:1420px; margin:24px auto; padding:0 22px; display:grid; grid-template-columns:300px minmax(0,1fr); gap:20px; align-items:start; }
 .settings-card,.preview-card { background:white; border:1px solid var(--line); border-radius:20px; box-shadow:0 10px 28px #183b4410; }
 .settings-card { padding:24px; display:grid; gap:17px; position:sticky; top:18px; }
@@ -74,6 +75,18 @@ footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px
 .admin-table { max-height:calc(100vh - 235px); }
 .admin-table thead { position:sticky; top:0; z-index:2; }
 .admin-table td small { display:block; color:var(--muted); margin-top:3px; }
+.auth-page { min-height:100vh; display:grid; place-items:center; padding:24px; background:radial-gradient(circle at 15% 10%,#d9eee8,transparent 30rem),linear-gradient(145deg,#eef4f1,#f8f4ec); }
+.auth-card { width:min(440px,100%); padding:34px; border-radius:24px; background:white; border:1px solid var(--line); box-shadow:0 22px 60px #173c451c; }
+.auth-card .brand-mark { margin-bottom:24px; }
+.auth-card h1 { margin:6px 0 8px; font-size:29px; }
+.auth-card>p:not(.section-kicker) { color:var(--muted); margin:0 0 24px; line-height:1.7; }
+.auth-card form { display:grid; gap:16px; }
+.auth-card label { display:grid; gap:7px; font-size:13px; font-weight:800; color:#53666e; }
+.auth-card input { width:100%; min-height:46px; padding:0 13px; border:1px solid #cbdad6; border-radius:11px; outline:none; }
+.auth-card input:focus { border-color:var(--teal); box-shadow:0 0 0 3px #147d7b18; }
+.auth-card small { color:var(--muted); font-weight:500; }
+.auth-error { padding:11px 13px; border-radius:10px; background:#fff0ed; color:#a64738; font-size:13px; font-weight:700; }
+.auth-card>a { display:block; margin-top:20px; color:var(--teal); font-size:13px; font-weight:800; }
 
 @media (max-width:850px) {
   .site-header { padding:0 16px; }
