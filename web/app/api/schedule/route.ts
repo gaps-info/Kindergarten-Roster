@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   try {
     await setup();
     const body = await request.json() as { title?: string; mode?: ScheduleMode; startDate?: string; endDate?: string; rows?: DutyRow[] };
-    if (!body.title || !body.startDate || !body.endDate || !Array.isArray(body.rows) || !["daily", "monthly"].includes(body.mode ?? "")) return Response.json({ error: "排班資料不完整。" }, { status: 400 });
+    if (!body.title || !body.startDate || !body.endDate || !Array.isArray(body.rows) || body.mode !== "weekly") return Response.json({ error: "排班資料不完整。" }, { status: 400 });
     if (body.rows.length > 400) return Response.json({ error: "排班筆數過多。" }, { status: 400 });
     const now = new Date().toISOString();
     await env.DB.prepare("INSERT INTO published_schedule (id, title, mode, start_date, end_date, rows_json, published_at, published_by) VALUES (1, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET title=excluded.title, mode=excluded.mode, start_date=excluded.start_date, end_date=excluded.end_date, rows_json=excluded.rows_json, published_at=excluded.published_at, published_by=excluded.published_by").bind(body.title, body.mode, body.startDate, body.endDate, JSON.stringify(body.rows), now, session.username).run();
