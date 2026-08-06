@@ -53,6 +53,66 @@ tr.is-next { background:#fff9ed; box-shadow:inset 4px 0 var(--coral); }
 .empty-state strong { color:var(--ink); font-size:19px; }
 footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px; }
 
+.public-dashboard { height:100vh; min-height:650px; overflow:hidden; padding-bottom:14px; display:grid; grid-template-rows:72px 126px minmax(0,1fr); gap:12px; }
+.public-dashboard>.site-header { height:72px; }
+.compact-hero { margin:0 14px; padding:17px 28px; border-radius:20px; color:white; display:grid; grid-template-columns:260px 1fr auto; align-items:center; gap:28px; background:linear-gradient(115deg,#0d5b68,#167e7b 62%,#3b9b87); box-shadow:0 12px 30px #165d6620; position:relative; overflow:hidden; }
+.compact-hero:after { content:""; position:absolute; width:210px; height:210px; border:38px solid #ffffff12; border-radius:50%; right:-55px; top:-90px; }
+.current-clock,.hero-summary,.hero-status { position:relative; z-index:1; }
+.current-clock { padding-right:26px; border-right:1px solid #ffffff30; display:grid; gap:5px; }
+.current-clock span { color:#bfe5df; font-size:11px; font-weight:800; letter-spacing:.08em; }
+.current-clock strong { font-size:16px; line-height:1.5; }
+.hero-summary h2 { margin:2px 0 5px; font-size:27px; }
+.hero-summary .section-kicker { color:#bfe5df; }
+.hero-summary>span { color:#d5eeec; font-size:13px; }
+.hero-status { padding:8px 13px; border:1px solid #ffffff40; border-radius:999px; background:#ffffff13; display:flex; align-items:center; gap:8px; font-size:12px; font-weight:800; white-space:nowrap; }
+.hero-status i { width:7px; height:7px; border-radius:50%; background:#ffd28a; box-shadow:0 0 0 4px #ffd28a24; }
+.compact-roster { min-height:0; margin:0 14px; border:1px solid var(--line); border-radius:20px; background:white; box-shadow:0 10px 28px #193b4510; overflow:hidden; display:grid; grid-template-rows:auto minmax(0,1fr) auto; }
+.compact-heading { min-height:62px; padding:10px 18px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+.compact-heading h3 { margin:2px 0 0; font-size:20px; }
+.compact-heading .button { padding:9px 13px; }
+.compact-actions { display:flex; align-items:end; gap:9px; }
+.compact-actions label { display:grid; gap:3px; color:var(--muted); font-size:10px; font-weight:800; }
+.compact-actions select { min-height:38px; min-width:145px; }
+.compact-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; color:var(--muted); }
+.compact-empty strong { color:var(--ink); font-size:19px; }
+.dashboard-week-card { margin:12px 18px 8px; min-height:0; border:1px solid var(--line); border-radius:15px; overflow:hidden; display:grid; grid-template-columns:180px minmax(0,1fr); grid-template-rows:auto 1fr; }
+.dashboard-week-title { grid-row:1/3; padding:18px; color:white; background:linear-gradient(150deg,#105f68,#147d7b); display:flex; flex-direction:column; justify-content:space-between; gap:12px; }
+.dashboard-week-title p { margin:0 0 4px; color:#bfe5df; font-size:12px; font-weight:900; }
+.dashboard-week-title strong { font-size:19px; }
+.dashboard-week-title>span { align-self:start; padding:5px 8px; border-radius:999px; background:#ffffff1b; border:1px solid #ffffff35; font-size:10px; font-weight:900; }
+.dashboard-team { display:grid; grid-template-columns:.8fr 1fr 1.5fr; border-bottom:1px solid var(--line); }
+.dashboard-team>div { padding:13px 16px; display:grid; align-content:center; gap:4px; border-right:1px solid var(--line); }
+.dashboard-team>div:last-child { border-right:0; }
+.dashboard-team small { color:var(--muted); font-weight:800; }
+.dashboard-team strong { font-size:17px; }
+.dashboard-team em { color:#80643a; font-size:11px; font-style:normal; font-weight:800; }
+.dashboard-days { display:grid; grid-template-columns:repeat(5,1fr); }
+.dashboard-days>div { padding:10px 8px; display:grid; place-items:center; align-content:center; gap:2px; border-right:1px solid var(--line); }
+.dashboard-days>div:last-child { border-right:0; }
+.dashboard-days span { font-weight:900; }
+.dashboard-days small { color:var(--muted); }
+.dashboard-days b { margin-top:3px; color:#527078; font-size:11px; }
+.dashboard-days .holiday { background:#fff1ed; color:#a34d40; }
+.dashboard-days .holiday b { color:#b54838; }
+.dashboard-week-nav { padding:8px 18px 12px; display:grid; grid-template-columns:auto minmax(260px,1fr) auto auto; align-items:end; gap:9px; }
+.dashboard-week-nav label { display:grid; gap:4px; color:var(--muted); font-size:11px; font-weight:800; }
+.dashboard-week-nav select { min-height:38px; }
+.dashboard-week-nav .button { min-height:38px; padding:8px 12px; }
+.dashboard-week-nav .button:disabled { opacity:.4; cursor:not-allowed; }
+.teacher-assignment-view { min-height:0; padding:12px 18px; display:grid; grid-template-rows:minmax(0,1fr) auto; gap:9px; }
+.teacher-assignment-grid { min-height:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(0,1fr)); gap:10px; }
+.teacher-assignment-card { min-width:0; padding:13px 14px; border:1px solid var(--line); border-radius:13px; background:linear-gradient(145deg,#fff,#f7fbf9); display:grid; align-content:start; gap:5px; }
+.teacher-assignment-card>div:first-child { display:flex; justify-content:space-between; align-items:center; gap:8px; color:var(--teal); font-size:11px; font-weight:900; }
+.teacher-assignment-card>div:first-child b { color:var(--teal-dark); }
+.teacher-assignment-card h4 { margin:1px 0 0; font-size:16px; }
+.teacher-assignment-card em { color:#80643a; font-size:11px; font-style:normal; font-weight:800; }
+.teacher-assignment-card p { margin:0; color:var(--muted); font-size:12px; }
+.assignment-dates { display:flex; flex-wrap:wrap; gap:4px; margin-top:3px; }
+.assignment-dates small { padding:3px 6px; border-radius:6px; background:#eaf4f1; color:#356961; font-weight:800; }
+.teacher-page-nav { display:flex; align-items:center; justify-content:center; gap:12px; }
+.teacher-page-nav span { color:var(--muted); font-size:12px; font-weight:800; }
+.teacher-page-nav .button { min-height:36px; padding:7px 11px; }
+
 .admin-page { background:#eef3f1; }
 .user-area { display:flex; align-items:center; gap:14px; font-size:13px; color:var(--muted); }
 .user-area a { color:var(--teal); font-weight:800; }
@@ -77,6 +137,22 @@ footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px
 .publish-bar { min-height:100px; padding:20px 23px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-bottom:1px solid var(--line); }
 .publish-bar>div>span { color:var(--muted); font-size:12px; }
 .notice { margin:14px 20px 0; padding:11px 14px; border-radius:10px; background:#e9f6f1; color:#166d57; font-size:13px; font-weight:700; }
+.workload-dashboard { margin:16px 20px 0; padding:18px; border:1px solid var(--line); border-radius:16px; background:#f8fbfa; }
+.workload-heading { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:14px; }
+.workload-heading h3 { margin:3px 0 2px; font-size:19px; }
+.workload-heading span { color:var(--muted); font-size:12px; }
+.balance-status { padding:7px 11px; border-radius:999px; background:#fff0df; color:#96602a; font-size:11px; font-weight:900; white-space:nowrap; }
+.balance-status.good { background:#e4f4ee; color:#176c58; }
+.workload-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:9px; }
+.workload-person { padding:12px; border:1px solid #dce7e4; border-radius:12px; background:white; min-width:0; }
+.workload-person-title { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.workload-person-title>b { color:var(--teal-dark); font-size:18px; }
+.workload-person-title small { font-size:10px; }
+.hours-track { height:7px; margin:9px 0; border-radius:999px; background:#e7efed; overflow:hidden; }
+.hours-track i { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,var(--teal),#55a992); }
+.workload-detail { display:flex; flex-wrap:wrap; gap:5px; }
+.workload-detail span { padding:3px 6px; border-radius:6px; background:#f0f5f3; color:#61747b; font-size:10px; font-weight:700; }
+.workload-note { margin:12px 0 0; color:var(--muted); font-size:11px; line-height:1.6; }
 .admin-table { max-height:calc(100vh - 235px); }
 .admin-table thead { position:sticky; top:0; z-index:2; }
 .admin-table td small { display:block; color:var(--muted); margin-top:3px; }
@@ -118,7 +194,37 @@ footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px
 .auth-error { padding:11px 13px; border-radius:10px; background:#fff0ed; color:#a64738; font-size:13px; font-weight:700; }
 .auth-card>a { display:block; margin-top:20px; color:var(--teal); font-size:13px; font-weight:800; }
 
+@media (min-width:851px) and (max-width:1150px) {
+  .compact-hero { grid-template-columns:220px 1fr auto; gap:18px; }
+  .admin-grid { grid-template-columns:250px minmax(0,1fr); padding:0 14px; gap:14px; }
+  .settings-card { padding:18px; }
+  .workload-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .week-team { grid-template-columns:1fr 1fr; }
+  .week-team>div:last-child { grid-column:1/-1; border-top:1px solid var(--line); }
+  .user-area { gap:9px; }
+  .teacher-assignment-grid { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(3,minmax(0,1fr)); }
+}
+
 @media (max-width:850px) {
+  .public-dashboard { height:auto; min-height:100vh; overflow:visible; display:block; padding-bottom:14px; }
+  .public-dashboard>.site-header { height:72px; }
+  .compact-hero { margin:10px 12px; padding:17px; grid-template-columns:1fr; gap:10px; }
+  .current-clock { padding:0 0 10px; border-right:0; border-bottom:1px solid #ffffff30; }
+  .hero-summary h2 { font-size:23px; }
+  .hero-status { justify-self:start; }
+  .compact-roster { margin:0 12px; display:block; }
+  .dashboard-week-card { margin:12px; display:block; }
+  .dashboard-week-title { min-height:92px; padding:14px; }
+  .dashboard-team { grid-template-columns:1fr; }
+  .dashboard-team>div { border-right:0; border-bottom:1px solid var(--line); }
+  .dashboard-days { grid-template-columns:1fr; }
+  .dashboard-days>div { grid-template-columns:70px 1fr auto; place-items:center start; border-right:0; border-bottom:1px solid var(--line); }
+  .dashboard-week-nav { grid-template-columns:1fr 1fr; padding:8px 12px 14px; }
+  .dashboard-week-nav label { grid-column:1/-1; grid-row:1; }
+  .dashboard-week-nav .current-week-button { grid-column:1/-1; }
+  .compact-actions { align-items:stretch; }
+  .teacher-assignment-view { padding:12px; }
+  .teacher-assignment-grid { grid-template-columns:1fr; grid-template-rows:none; }
   .site-header { padding:0 16px; }
   .site-header .eyebrow { display:none; }
   .site-header h1 { font-size:17px; }
@@ -135,6 +241,10 @@ footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px
   td,th { padding:12px 13px; }
   .admin-grid { grid-template-columns:1fr; padding:0 12px; }
   .settings-card { position:static; }
+  .preview-card { overflow:visible; }
+  .workload-dashboard { margin:12px; padding:14px; }
+  .workload-heading { align-items:flex-start; }
+  .workload-grid { grid-template-columns:1fr; }
   .publish-bar { align-items:flex-start; flex-direction:column; }
   .button.publish { width:100%; }
   .user-area span { display:none; }
@@ -150,6 +260,22 @@ footer { text-align:center; color:#7c898e; font-size:12px; padding:8px 20px 30px
   .week-days>div:last-child { border-bottom:0; }
   .week-navigation { grid-template-columns:1fr 1fr; }
   .week-navigation label { grid-column:1/-1; grid-row:1; }
+}
+
+@media (max-width:520px) {
+  .site-header { gap:9px; }
+  .site-header h1 { font-size:15px; }
+  .admin-link { padding:8px 10px; font-size:12px; }
+  .user-area>a:last-child { font-size:12px; }
+  .compact-heading { padding:10px 12px; }
+  .compact-heading h3 { font-size:18px; }
+  .compact-heading { align-items:flex-start; gap:10px; }
+  .compact-actions { display:grid; grid-template-columns:1fr auto; }
+  .compact-actions select { min-width:0; width:100%; }
+  .workload-heading { display:grid; }
+  .balance-status { justify-self:start; }
+  .publish-bar { padding:16px; }
+  .settings-card { padding:18px; }
 }
 
 @media print {

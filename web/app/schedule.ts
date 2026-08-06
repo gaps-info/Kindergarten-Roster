@@ -33,6 +33,7 @@ export function generateSchedule(startDate: string, endDate: string, _mode: Sche
   const earlyCount = Object.fromEntries(earlyOrder.map((teacher) => [teacher, 0]));
   const shortCount = Object.fromEntries(teachers.map((teacher) => [teacher, 0]));
   const longCount = Object.fromEntries(teachers.map((teacher) => [teacher, 0]));
+  const dutyHours = Object.fromEntries(teachers.map((teacher) => [teacher, 0]));
   const classCount = Object.fromEntries(classOrder.map((className) => [className, 0]));
   const rows: DutyRow[] = [];
   let earlyCursor = 0;
@@ -44,20 +45,21 @@ export function generateSchedule(startDate: string, endDate: string, _mode: Sche
     earlyCursor = (earlyOrder.indexOf(early) + 1) % earlyOrder.length;
 
     const eligibleClasses = classOrder.filter((className) => classes[className].filter((teacher) => teacher !== early).length >= 2);
-    const dutyClass = [...eligibleClasses].sort((a, b) => classCount[a] - classCount[b] || circularClass(a, classCursor) - circularClass(b, classCursor))[0];
+    const dutyClass = [...eligibleClasses].sort((a, b) => classCount[a] - classCount[b] || availableHours(a, early, dutyHours) - availableHours(b, early, dutyHours) || circularClass(a, classCursor) - circularClass(b, classCursor))[0];
     classCount[dutyClass]++;
     classCursor = (classOrder.indexOf(dutyClass) + 1) % classOrder.length;
 
     const longPair = classes[dutyClass]
       .filter((teacher) => teacher !== early)
-      .sort((a, b) => longCount[a] - longCount[b] || teachers.indexOf(a) - teachers.indexOf(b))
+      .sort((a, b) => dutyHours[a] - dutyHours[b] || longCount[a] - longCount[b] || teachers.indexOf(a) - teachers.indexOf(b))
       .slice(0, 2);
-    longPair.forEach((teacher) => longCount[teacher]++);
+    const workingDays = weekDates.filter((date) => !holidays.has(date)).length;
+    longPair.forEach((teacher) => { longCount[teacher]++; dutyHours[teacher] += workingDays * 2; });
 
     const shortDuty = teachers
       .filter((teacher) => teacher !== early && !longPair.includes(teacher))
-      .sort((a, b) => shortCount[a] - shortCount[b] || teachers.indexOf(a) - teachers.indexOf(b))[0];
-    shortCount[shortDuty]++;
+      .sort((a, b) => dutyHours[a] - dutyHours[b] || shortCount[a] - shortCount[b] || teachers.indexOf(a) - teachers.indexOf(b))[0];
+    shortCount[shortDuty]++; dutyHours[shortDuty] += workingDays;
 
     for (const date of weekDates) {
       rows.push({
@@ -84,5 +86,6 @@ export function weekKey(iso: string) {
 
 function circularClass(name: string, cursor: number) { return (classOrder.indexOf(name) - cursor + classOrder.length) % classOrder.length; }
 function circularTeacher(name: string, cursor: number) { return (earlyOrder.indexOf(name) - cursor + earlyOrder.length) % earlyOrder.length; }
+function availableHours(className: string, early: string, dutyHours: Record<string, number>) { return classes[className].filter((teacher) => teacher !== early).sort((a, b) => dutyHours[a] - dutyHours[b]).slice(0, 2).reduce((sum, teacher) => sum + dutyHours[teacher], 0); }
 function localDate(iso: string) { return new Date(`${iso}T12:00:00`); }
 function toIso(date: Date) { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`; }
